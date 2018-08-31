@@ -41,8 +41,7 @@ Above connection provide below configuration:
   
   8. After above steps lxaccell device file will be created /dev/lxaccell
   Now cat command can be used to get accelleration data from LIS3DH :- cat /dev/lxaccell
-  sample output is given below:
-------------------------------------------------------  
+  sample output is given below: 
  root@beaglebone:~/lx/accell_driver# cat /dev/lxaccell
 -76,-276,960
 -80,-272,964
@@ -56,7 +55,7 @@ Above connection provide below configuration:
 -92,-284,964
 -80,-272,964
 -88,-276,964
- ----------------------------------------------------- 
+
   
   
   
