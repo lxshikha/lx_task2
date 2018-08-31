@@ -28,21 +28,21 @@ In this experiment LIS3DH is connected with Beaglebone on I2C1
                  | INT           | P9_23         |
                  | SDO           | P9_1          |
                  | GND           | P9_2          | 
-Above connection provide below configuration:
-                     LIS3DH address on I2C bus = 0x18 (SDO = 0(gnd))
-                     Communication between beaglebona and LIS3DH is I2C (CS = high)
+-Above connection provide below configuration:
+- LIS3DH address on I2C bus = 0x18 (SDO = 0(gnd))
+- Communication between beaglebona and LIS3DH is I2C (CS = high)
                      
   7. After driver build and hardware connection:-
-    (i) Export device tree overlay blob
-     echo BB-LX-ACCEL > /sys/devices/platform/bone_capemgr/slots
-    (ii) Insert the driver using insmod
+  - (i) Export device tree overlay blob : 
+   echo BB-LX-ACCEL > /sys/devices/platform/bone_capemgr/slots
+  - (ii) Insert the driver using insmod
      insmod lxdriver.ko   
+     
   Note 5: Step5 has generated lxdriver.ko file i.e. lodable kernel module for lis3dh. insmod command should be executed from the build directory as  lxdriver.ko is available at this path only.
   
   8. After above steps lxaccell device file will be created /dev/lxaccell
   Now cat command can be used to get accelleration data from LIS3DH :- cat /dev/lxaccell
-  sample output is given below: 
- root@beaglebone:~/lx/accell_driver# cat /dev/lxaccell
+  sample output is given below:  root@beaglebone:~/lx/accell_driver# cat /dev/lxaccell
 -76,-276,960
 -80,-272,964
 -92,-280,968
