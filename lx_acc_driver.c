@@ -265,5 +265,4 @@ module_init(lx_driver_init)
 module_exit(lx_driver_exit)
 
 MODULE_DESCRIPTION("Misc driver for LIS3DH accelerometer");
-MODULE_AUTHOR("Pascal Jacquemart <p99_pascal@yahoo.fr>");
 MODULE_LICENSE("GPL");
