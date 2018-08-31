@@ -38,13 +38,15 @@ In this experiment LIS3DH is connected with Beaglebone on I2C1
   - (ii) Insert the driver using insmod
      insmod lxdriver.ko   
      
-  Note 5: Step5 has generated lxdriver.ko file i.e. lodable kernel module for lis3dh. insmod command should be executed from the build directory as  lxdriver.ko is available at this path only.
+  Note: Step5 has generated lxdriver.ko file i.e. lodable kernel module for lis3dh. insmod command should be executed from the build directory as  lxdriver.ko is available at this path only.
   
   8. After above steps lxaccell device file will be created /dev/lxaccell
   Now cat command can be used to get accelleration data from LIS3DH :- cat /dev/lxaccell
-  sample output is given below:  root@beaglebone:~/lx/accell_driver# cat /dev/lxaccell
--76,-276,960
--80,-272,964
+ 
+ 9.sample output is given below:  
+ root@beaglebone:~/lx/accell_driver# cat /dev/lxaccell  
+-76,-276,960  
+-80,-272,964  
 -92,-280,968
 -72,-276,956
 -80,-276,968
