@@ -106,6 +106,10 @@ static ssize_t lx_accell_device_read(struct file *file, char __user *buffer,
 
     struct lx_accell_private_data *pdata = misc_get_drvdata(file);
 
+    /* Below offset check is to stop "cat" to read accellerometer data recursively */ 
+    if(*offset > 0)
+        return 0;
+
     if (pdata && pdata->client && pdata->client->adapter) {
 	 status = lis3dh_acc_i2c_read(pdata->client, i2c_data, 1);
     	 if (!i2c_data[0]) {
@@ -124,6 +128,9 @@ static ssize_t lx_accell_device_read(struct file *file, char __user *buffer,
 	}
 	length = snprintf(buffer, length, "%d,%d,%d\n", pdata->acc[0], pdata->acc[1], pdata->acc[2]);
     }
+
+    *offset = *offset + length;
+
     return (status ? length : -EIO);
 }
 
