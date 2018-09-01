@@ -49,7 +49,6 @@
                               reg = <0x18>;
                               interrupt-parent = <&gpio1>;
                               interrupts = <17 0x0>;
-                        //      atmel,irq-gpio = <&gpio4 19 0>;
                         };
 
                 };
