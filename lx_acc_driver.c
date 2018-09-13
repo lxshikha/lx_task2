@@ -8,6 +8,7 @@
 #include <linux/irq.h>
 #include <linux/interrupt.h>
 #include <linux/delay.h>
+#include <linux/uaccess.h>
 
 #include "lis3dh_acc.h"
 
@@ -102,7 +103,9 @@ static ssize_t lx_accell_device_read(struct file *file, char __user *buffer,
                                                 size_t length, loff_t *offset)
 {
     int status = 0;
+    int cpstatus = 0;
     u8 i2c_data[6] = { STATUS_REG, 0, 0, 0, 0, 0};
+    char temp_buff[50];  
 
     struct lx_accell_private_data *pdata = misc_get_drvdata(file);
 
@@ -126,7 +129,12 @@ static ssize_t lx_accell_device_read(struct file *file, char __user *buffer,
             		pdata->acc[2] = (((s16) ((i2c_data[5] << 8) | i2c_data[4])) >> 4);
 		}
 	}
-	length = snprintf(buffer, length, "%d,%d,%d\n", pdata->acc[0], pdata->acc[1], pdata->acc[2]);
+	length = snprintf(temp_buff, length, "%d,%d,%d\n", pdata->acc[0], pdata->acc[1], pdata->acc[2]);
+	cpstatus = copy_to_user(buffer, temp_buff, length);
+	if(cpstatus){
+                printk("Error in writing to user buffer\n");
+                return -EIO;
+        }
     }
 
     *offset = *offset + length;
