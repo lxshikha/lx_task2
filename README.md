@@ -41,21 +41,14 @@ In this experiment LIS3DH is connected with Beaglebone on I2C1
 8. After above steps lxaccell device file will be created /dev/lxaccell
   Now cat command can be used to get accelleration data from LIS3DH using cat command:- cat /dev/lxaccell
  
- 9.sample output is given below:  
- root@beaglebone:~/lx/accell_driver# cat /dev/lxaccell  
--76,-276,960  
--80,-272,964  
--92,-280,968  
--72,-276,956  
--80,-276,968  
--84,-268,960  
--80,-280,960  
--92,-280,964  
--80,-284,960  
--92,-284,964  
--80,-272,964  
--88,-276,964  
-
-  
+ 9.sample output is given below:    
+ root@beaglebone:~/gwh/lx_task2# cat /dev/lxaccell  
+-324,-248,900  
+root@beaglebone:~/gwh/lx_task2# cat /dev/lxaccell  
+-320,-268,920  
+root@beaglebone:~/gwh/lx_task2# cat /dev/lxaccell  
+-332,-248,916  
+root@beaglebone:~/gwh/lx_task2# cat /dev/lxaccell  
+-332,-268,896  
   
   
